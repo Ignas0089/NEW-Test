@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Operations Newsletter</title>
+</head>
+<body>
+    <header>
+        <h1>Operations Newsletter</h1>
+        <p>Total members: {{ organization.total_members }}</p>
+        <p>Total incidents: {{ organization.total_incidents }}</p>
+        <p>Open incidents: {{ organization.open_incidents }}</p>
+        <p>Average resolution (minutes): {{ organization.average_resolution_minutes }}</p>
+    </header>
+
+    <section id="teams">
+        <h2>Team Highlights</h2>
+        {% for team in team_kpis %}
+        <article class="team">
+            <h3>{{ team.team_id | title }}</h3>
+            <ul>
+                <li>Members: {{ team.member_count }}</li>
+                <li>Incidents: {{ team.incident_count }}</li>
+                <li>Open incidents: {{ team.open_incidents }}</li>
+                <li>Average resolution: {{ team.average_resolution_minutes or 'n/a' }}</li>
+                <li>Top keywords: {{ team.top_keywords | join(', ') }}</li>
+            </ul>
+        </article>
+        {% endfor %}
+    </section>
+
+    <section id="transcripts">
+        <h2>Meeting Highlights</h2>
+        {% for transcript in transcripts %}
+        <article class="transcript">
+            <h3>{{ transcript.team_id | title }}</h3>
+            <p><strong>Highlights:</strong> {{ transcript.highlights }}</p>
+            <p><strong>Top Keywords:</strong>
+                {% for keyword, count in transcript.top_keywords %}
+                    <span class="keyword">{{ keyword }} ({{ count }})</span>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </article>
+        {% endfor %}
+    </section>
+</body>
+</html>

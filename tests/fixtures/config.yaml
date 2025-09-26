@@ -1,0 +1,11 @@
+data_paths:
+  teams_export: tests/fixtures/teams.csv
+  incidents: tests/fixtures/incidents.json
+  transcripts: tests/fixtures/transcripts
+newsletter:
+  template: app/render/templates/default/newsletter.html
+  css: app/render/templates/default/newsletter.css
+  output_html: tests/output/test_newsletter.html
+  output_pdf: tests/output/test_newsletter.pdf
+wkhtmltopdf:
+  binary_path: bin/wkhtmltopdf

@@ -1,0 +1,11 @@
+data_paths:
+  teams_export: data/teams_export/teams.csv
+  incidents: data/incidents/incidents.json
+  transcripts: data/transcripts
+newsletter:
+  template: app/render/templates/default/newsletter.html
+  css: app/render/templates/default/newsletter.css
+  output_html: output/newsletter.html
+  output_pdf: output/newsletter.pdf
+wkhtmltopdf:
+  binary_path: bin/wkhtmltopdf
