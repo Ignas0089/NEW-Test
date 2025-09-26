@@ -1,0 +1,5 @@
+team_id,member_id,name,role,timezone,email
+alpha,1,Alice Smith,Manager,UTC,alice@example.com
+alpha,2,Bob Jones,Engineer,UTC,bob@example.com
+beta,3,Carol White,Engineer,UTC+1,carol@example.com
+beta,4,Dan Brown,Analyst,UTC+1,dan@example.com
