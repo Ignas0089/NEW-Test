@@ -1,0 +1,15 @@
+{
+  "name": "new-test-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@8.15.4",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "preview": "pnpm --filter web preview",
+    "lint": "pnpm --filter web lint",
+    "test": "pnpm --filter web test",
+    "test:ui": "pnpm --filter web test:ui",
+    "test:e2e": "pnpm --filter web test:e2e"
+  }
+}
