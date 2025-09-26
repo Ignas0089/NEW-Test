@@ -1,0 +1,14 @@
+{
+  "name": "new-test-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@8.15.4",
+  "scripts": {
+    "install:all": "pnpm install --frozen-lockfile=false",
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "lint": "pnpm --filter web lint",
+    "test": "pnpm --filter web test",
+    "format": "pnpm --filter web format"
+  }
+}
