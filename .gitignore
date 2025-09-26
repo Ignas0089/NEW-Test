@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+pnpm-lock.yaml
+apps/web/dist
+apps/web/.vite
+apps/web/coverage
+apps/web/playwright-report
+apps/web/test-results
+apps/web/drizzle
