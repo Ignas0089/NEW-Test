@@ -15,7 +15,7 @@ This project automates the creation of weekly newsletters by combining Markdown 
 2. Open PowerShell and navigate to the repository root.
 3. Run the setup script to create the Python virtual environment and install dependencies:
    ```powershell
-   scripts/setup_venv.ps1
+   .\scripts\setup_venv.ps1
    ```
    The script creates a `.venv` folder inside the repository and installs required packages using `requirements.txt`. Reactivate the environment in future sessions with:
    ```powershell
