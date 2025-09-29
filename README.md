@@ -45,11 +45,15 @@ repo-root/
 - If wkhtmltopdf cannot be added to the system `PATH`, copy `wkhtmltopdf.exe` into `bin/` at the repository root and update the configuration file (see customization section) to point to the executable.
 
 ## Generating the Weekly Newsletter
-Use the helper script to build the latest newsletter:
+Use the helper script to build the latest newsletter and automatically scope it to the previous calendar week:
 ```powershell
 scripts/run_generate_last_week.ps1
 ```
-The script activates the virtual environment, loads content from the previous week (relative to the execution date), and writes the finished PDF into the `output/` folder. Verify that all required data files exist before running the script to avoid missing-content warnings.
+The script activates the virtual environment (or a path you provide via `-VirtualEnvPath`), calculates the Monday–Sunday range for the prior week, and stores those values in the `NEWSLETTER_START_DATE`/`NEWSLETTER_END_DATE` environment variables for the Python process. Generated files are timestamped (for example, `output/newsletter_20240603_20240609.pdf`). To preview a specific window, pass a custom reference date:
+```powershell
+scripts/run_generate_last_week.ps1 -ReferenceDate "2024-06-15"
+```
+Verify that all required data files exist before running the script to avoid missing-content warnings.
 
 ## Managing Scheduled Tasks
 Automate weekly execution with Windows Task Scheduler:
@@ -57,7 +61,7 @@ Automate weekly execution with Windows Task Scheduler:
 2. Schedule it to run weekly at the desired time.
 3. Set the action to start a program and provide:
    - **Program/script:** `powershell.exe`
-   - **Add arguments:** `-ExecutionPolicy Bypass -File "<repo-path>\scripts\run_generate_last_week.ps1"`
+   - **Add arguments:** `-ExecutionPolicy Bypass -File "<repo-path>\scripts\run_generate_last_week.ps1" -VirtualEnvPath "<repo-path>\.venv"`
    - **Start in:** `<repo-path>`
 4. Ensure the task runs whether the user is logged on or not and has sufficient permissions to access the data and output directories.
 
